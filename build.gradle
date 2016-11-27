@@ -1,15 +1,4 @@
-group 'com.bavatinolab.webflow'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'idea'
-
-sourceCompatibility = 1.5
-
-repositories {
-    mavenCentral()
-}
+apply from: 'gradle/common.gradle'
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
