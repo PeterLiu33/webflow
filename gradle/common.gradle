@@ -15,12 +15,14 @@ repositories {
 }
 
 
+def env = System.getProperty("profile") ?: "$profile"
+
 sourceSets {
     main {
-        resources.srcDirs += ['src/main/webapp', "src/main/profile/$profile"]
+        resources.srcDirs += ['src/main/webapp', "src/main/profile/$env"]
     }
     test {
-        resources.srcDirs += ['src/test/webapp', "src/main/profile/$profile"]
+        resources.srcDirs += ['src/test/webapp', "src/main/profile/$env"]
     }
 }
 
@@ -36,7 +38,5 @@ task wrapper(type: Wrapper) {
 }
 
 test {
-    if(project.hasProperty('profile')){
-        systemProperty "spring.profiles.active", "$profile"
-    }
+    systemProperty "spring.profiles.active", "$env"
 }
